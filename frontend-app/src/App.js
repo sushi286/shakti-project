@@ -16,15 +16,21 @@ function App() {
       <div
         onClick={() => setMenuOpen(true)}
         style={{
-          position: "fixed",
-          top: "15px",
-          left: "15px",
-          fontSize: "26px",
-          cursor: "pointer",
-          zIndex: 3000
+           position: "fixed",
+    top: "10px",
+    left: "10px",
+    fontSize: "26px",
+    cursor: "pointer",
+    zIndex: 3000,
+    background: "white",
+    padding: "6px 10px",
+    borderRadius: "8px",
+    boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
         }}
       >
         ☰
+
+
       </div>
 
       {/* Sidebar */}

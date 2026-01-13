@@ -68,7 +68,7 @@ function Chatbot() {
             value={msg}
             onChange={e => setMsg(e.target.value)}
             placeholder="Ask something..."
-            style={{ width: "100%", marginBottom: "5px" }}
+            style={{ width: "95%", marginBottom: "5px" }}
           />
 
           <button onClick={send} style={{ width: "100%" }}>

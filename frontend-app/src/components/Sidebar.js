@@ -51,17 +51,18 @@ function Sidebar({ isOpen, closeSidebar }) {
 }
 
 const styles = {
-  sidebar: {
-    width: "260px",
-    height: "100vh",
-    background: "#f1ecf9",
-    position: "fixed",
-    top: 0,
-    left: 0,
-    padding: "15px",
-    borderRight: "1px solid #ddd",
-    zIndex: 2000,
-  },
+ sidebar: {
+  width: "260px",
+  height: "100vh",
+  background: "#f1ecf9",
+  position: "fixed",
+  top: 0,
+  left: 0,
+  padding: "60px 15px 15px 15px", // 👈 more space at top
+  borderRight: "1px solid #ddd",
+  zIndex: 2000,
+},
+
   closeBtn: {
     float: "right",
     background: "none",
