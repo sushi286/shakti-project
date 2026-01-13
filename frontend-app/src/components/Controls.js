@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Controls() {
+function Controls({ onRoute }) {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [mode, setMode] = useState("walk");
@@ -16,11 +16,12 @@ function Controls() {
         <option value="car">Car</option>
       </select>
 
-      <button onClick={() => alert(`Finding safe route from ${from} to ${to} by ${mode}`)}>
+      <button onClick={() => onRoute({ from, to, mode })}>
         Find Safe Route
       </button>
     </div>
   );
 }
+
 
 export default Controls;

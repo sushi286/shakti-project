@@ -8,6 +8,7 @@ import Sidebar from "./components/Sidebar";
 import "./App.css";
 
 function App() {
+  const [routeData, setRouteData] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -43,8 +44,14 @@ function App() {
           <p>AI-powered safety-first navigation for women & night commuters</p>
         </div>
 
-        <div className="card"><Controls /></div>
-        <div className="card"><MapView /></div>
+       <div className="card">
+  <Controls onRoute={setRouteData} />
+</div>
+
+<div className="card">
+  <MapView routeData={routeData} />
+</div>
+
         <div className="card"><SOSButton /></div>
 
         <Chatbot />
