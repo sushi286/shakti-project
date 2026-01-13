@@ -3,7 +3,9 @@ import { useState } from "react";
 function Sidebar({ isOpen, closeSidebar }) {
   const [location, setLocation] = useState(null);
   const [contacts, setContacts] = useState([]);
-  const [name, setName] = useState("");
+const [name, setName] = useState("");
+const [phone, setPhone] = useState("");
+
 
   const getLocation = () => {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -13,12 +15,17 @@ function Sidebar({ isOpen, closeSidebar }) {
       });
     });
   };
+const addContact = () => {
+  if (!name || !phone) {
+    alert("Please enter both name and phone number");
+    return;
+  }
 
-  const addContact = () => {
-    if (!name) return;
-    setContacts([...contacts, name]);
-    setName("");
-  };
+  setContacts([...contacts, { name, phone }]);
+  setName("");
+  setPhone("");
+};
+
 
   if (!isOpen) return null; // hide sidebar when closed
 
@@ -41,11 +48,22 @@ function Sidebar({ isOpen, closeSidebar }) {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
+      <input
+  placeholder="Phone number"
+  value={phone}
+  onChange={(e) => setPhone(e.target.value)}
+/>
+
       <button onClick={addContact}>Add</button>
 
-      <ul>
-        {contacts.map((c, i) => <li key={i}>{c}</li>)}
-      </ul>
+     <ul>
+  {contacts.map((c, i) => (
+    <li key={i}>
+      <strong>{c.name}</strong> – {c.phone}
+    </li>
+  ))}
+</ul>
+
     </div>
   );
 }
