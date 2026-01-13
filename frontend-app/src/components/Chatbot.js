@@ -2,18 +2,10 @@ import { useState } from "react";
 
 function Chatbot() {
   const [open, setOpen] = useState(false);
-  const [msg, setMsg] = useState("");
-  const [chat, setChat] = useState([]);
-
-  const send = () => {
-    if (!msg) return;
-    setChat([...chat, "You: " + msg, "Bot: Stay on well-lit roads and avoid isolated areas."]);
-    setMsg("");
-  };
 
   return (
     <>
-      {/* Floating Button */}
+      {/* Floating Toggle Button */}
       <div
         onClick={() => setOpen(!open)}
         style={{
@@ -31,50 +23,30 @@ function Chatbot() {
           justifyContent: "center",
           cursor: "pointer",
           boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
-          zIndex: 1000
+          zIndex: 3000,
         }}
       >
         🤖
       </div>
 
-      {/* Chat Window */}
+      {/* Botpress Chat Window */}
       {open && (
-        <div
+        <iframe
+          title="Safety Assistant"
+          src="https://cdn.botpress.cloud/webchat/v3.5/shareable.html?configUrl=https://files.bpcontent.cloud/2025/09/08/17/20250908171155-RB0CMY1U.json"
           style={{
             position: "fixed",
             bottom: "90px",
             right: "20px",
-            width: "280px",
-            background: "white",
+            width: "360px",
+            height: "520px",
+            border: "none",
             borderRadius: "12px",
-            boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-            padding: "10px",
-            zIndex: 1000
+            boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+            zIndex: 3000,
+            background: "white",
           }}
-        >
-          <h4>Safety Assistant</h4>
-
-          <div style={{
-            height: "120px",
-            overflowY: "auto",
-            border: "1px solid #ddd",
-            padding: "5px",
-            marginBottom: "5px"
-          }}>
-            {chat.map((c, i) => <p key={i}>{c}</p>)}
-          </div>
-
-          <input
-            value={msg}
-            onChange={e => setMsg(e.target.value)}
-            placeholder="Ask something..."
-            style={{ width: "95%", marginBottom: "5px" }}
-          />
-
-          <button onClick={send} style={{ width: "100%" }}>
-            Send
-          </button>
-        </div>
+        />
       )}
     </>
   );
